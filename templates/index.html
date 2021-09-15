@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>welcome to my hospital management home page</h1>
+<table>
+    <tr>
+        <th>Sr. No.</th>
+        <th>Name</th>
+        <th>contact</th>
+        <th>ward number</th>
+    </tr>
+
+    {% for detail in patient_details %}
+    <tr>
+        <td>{{detail.id}}</td>
+        <td><h4><a href="details/?patient_id={{detail.id}}">{{detail.patient_name}}</a></h4></td>
+        <td><h4>{{detail.phone_number}}</h4></td>
+        <td><p>{{detail.ward_number}}</p></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
