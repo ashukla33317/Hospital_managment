@@ -8,7 +8,7 @@ class Patient_detail_form(forms.Form):
     payment_detail=forms.IntegerField()
     phone_number=forms.CharField(max_length=20)
 
-class Update_form(forms.Form):
+class Update_form(Patient_detail_form):
     patient_name=forms.CharField(required=False)
     patient_age=forms.IntegerField(required=False)
     disease=forms.CharField(required=False)

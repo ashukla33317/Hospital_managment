@@ -8,4 +8,9 @@
 <h1>{{details.ward_number}}</h1>
 <h1>{{details.payment_details}}</h1>
 <h1>{{details.phone_number}}</h1>
+    {% if not details.discharge %}
+    <h1>
+    <a href="/update/?patient_id={{details.id}}">Update Info</a>
+    </h1>
+    {% endif %}
 {% endblock %}

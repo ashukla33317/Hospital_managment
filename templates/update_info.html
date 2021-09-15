@@ -4,13 +4,13 @@
 
     <h1>{{current_detils.patient_name}}</h1>
     <h1>{{current_detils.phone_number}}</h1>
-    <form action="update" method="post">
+    <form action="/update/" method="post">
         {% csrf_token %}
         <label for="">Current Disease {{current_details.disease}} : {{ update_form.disease }}</label><br><br>
         <label for="">current ward number {{current_details.ward_number}} : {{ update_form.ward_number }}</label><br><br>
         <label for="">current amount paid {{current_details.payment_detail}} : {{ update_form.payment_detail}}</label><br><br>
         <input type="hidden" name="patient_id" value={{current_details.id}}>
-        <input type="checkbox" name="got_discharge" id="" value={{True}} > Yes <br><br>
+        <input type="checkbox" name="discharge" id="" value={{True}} > Yes <br><br>
         <button type="submit">Update</button><br><br>
     </form>
 

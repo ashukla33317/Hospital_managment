@@ -8,3 +8,4 @@ class Patient_detail(models.Model):
     ward_number=models.IntegerField()
     payment_detail=models.IntegerField()
     phone_number=models.CharField(max_length=20)
+    discharge = models.BooleanField(default= False)

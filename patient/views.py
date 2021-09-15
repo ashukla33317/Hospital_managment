@@ -48,18 +48,16 @@ class Update_info(View):
             'current_details':models.Patient_detail.objects.get(id = patient_id),
             'update_form':forms.Update_form()
         }
-        return render(request,'new_patient.html',content)        
+        return render(request,'update_info.html',content)        
 
     
     def post(self,request):
-        patient_name=request.POST['patient_name']
-        patient_age=request.POST['patient_age']
+        patient_id = request.POST['patient_id']
         disease=request.POST['disease']
         ward_number=request.POST['ward_number']
         payment_detail=request.POST['payment_detail']
-        phone_number=request.POST['phone_number']
-        got_discharge = request.POST.get('got_discharge',False)
-        print(got_discharge)
+        discharge = request.POST.get('discharge',False)
+        print(discharge)
 
 
         current_info = models.Patient_detail.objects.get(id= patient_id)
@@ -67,9 +65,8 @@ class Update_info(View):
 
         current_info.disease = current_info.disease if disease == '' else disease
         current_info.ward_number = current_info.ward_number if ward_number == '' else ward_number
-        current_info.payment_detail = current_info.total_payment if payment_detail == '' else current_info.payment_detail+eval(payment_detail)
-        current_info.phone_number  = current_info.phone_number if phone_number== '' else phone_number
-        current_info.got_discharge = got_discharge
+        current_info.payment_detail = current_info.payment_detail if payment_detail == '' else current_info.payment_detail+eval(payment_detail)
+        current_info.discharge = discharge
         current_info.save()
 
         return redirect('/')
