@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="appointment" method="POST">
+    {% csrf_token %}
+    {{appointment_form}}
+    <button type="submit">submit</button>
+</form>
+
+{% endblock %}

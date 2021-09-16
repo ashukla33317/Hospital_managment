@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from . import forms
 from django.views import View
 from .import models
+import patient
 
 
 class Patient(View):
@@ -73,3 +74,23 @@ class Update_info(View):
 
 
 
+class Appointment(View):
+    def get(self,request):
+        content={
+            'appointment_form':forms.Appointment_forms()
+        }
+        return render(request,'appointment.html',content)
+
+    def post(self,request):
+        patient_name=request.POST['patient_name']    
+        patient_age=request.POST['patient_age']
+        phone_number=request.POST['phone_number']
+        appointment_date=request.POST['appointment_date']
+        update_appointment=models.Appointment(
+            patient_name=patient_name,
+            patient_age=patient_age,
+            phone_number=phone_number,
+            appointment_date= appointment_date
+            )
+        update_appointment.save()
+        return redirect('/')

@@ -10,9 +10,16 @@
     
     <ul>
         <li><a href="/">Home</a></li>
+        {% if request.user.is_authenticated %}
         <li><a href="/add_patient">Add patient</a></li>
-        <li><a href="logout">LOG OUT</a></li>
+
+        <li><a href="/logout">LOG OUT</a></li>
+        <li><a href="view_appointment">VIew</a></li>
+       
+        {% else %}
         <li><a href="/login">Login Form</a></li>
+        <li><a href="/appointment">TAke Appointment</a></li>
+        {% endif %}
     </ul>
     {% block content %}
     {% endblock %}

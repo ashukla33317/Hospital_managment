@@ -16,3 +16,10 @@ class Update_form(Patient_detail_form):
     payment_detail=forms.IntegerField(required=False)
     phone_number=forms.CharField(required=False)
     discharge = forms.BooleanField(required = False)
+
+class Appointment_forms(forms.Form):
+    patient_name=forms.CharField(max_length=20)
+    patient_age=forms.IntegerField()
+    disease=forms.CharField(max_length=50)
+    phone_number=forms.CharField(max_length=20)
+    appointment_date=forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
 <h1>welcome to my hospital management home page</h1>
 <table>
     <tr>
@@ -19,6 +20,7 @@
     </tr>
     {% endfor %}
 </table>
+{% endif %}
 
 
 {% endblock %}
